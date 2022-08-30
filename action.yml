@@ -1,0 +1,32 @@
+name: Extract Release Commit
+
+description: Used to extract the release version from a release-please formatted commit.
+
+author: Jacob Magnusson
+
+branding:
+  icon: arrow-up-right
+  color: blue
+
+inputs:
+  commit_message:
+    description: Used to manually provide a comnmit message, in case `github.event.head_commit.message` is not what should be read.
+    required: false
+    default: ''
+
+outputs:
+  version:
+    description: The extracted version. An empty string `""` if it could not be extracted (i.e. not a release commit.)
+    value: ${{ steps.extract.outputs.version }}
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      id: extract
+      env:
+        COMMIT_MSG: "${{ inputs.commit_message || github.event.head_commit.message }}"
+        STRIP_PREFIX: "chore(main): release "
+      run: |
+        VERSION=$(echo $COMMIT_MSG | grep "$STRIP_PREFIX" | sed "s/^$STRIP_PREFIX//")
+        echo ::set-output name=version::$VERSION
