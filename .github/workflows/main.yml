@@ -22,21 +22,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3.0.2
-      - uses: ./
+
+      - name: Test 1
         id: test1
+        uses: ./
         with:
           commit_message: "chore(main): release 0.1.4"
 
       - run: |
-          [[ ${{ steps.test1.outputs.version }} == "0.1.4" ]]
+          [[ "${{ steps.test1.outputs.version }}" == "0.1.4" ]]
 
-      - uses: ./
+      - name: Test 2
         id: test2
+        uses: ./
         with:
           commit_message: "chore(main): other chore 1.2.9"
 
       - run: |
-          [[ ${{ steps.test2.outputs.version }} == "" ]]
+          [[ "${{ steps.test2.outputs.version }}" == "" ]]
 
   release-pull-request:
     runs-on: ubuntu-latest
