@@ -9,7 +9,7 @@ branding:
   color: blue
 
 inputs:
-  commit_message:
+  commit-message:
     description: Used to manually provide a comnmit message, in case `github.event.head_commit.message` is not what should be read.
     required: false
     default: ""
@@ -25,7 +25,7 @@ runs:
     - shell: bash
       id: extract
       env:
-        COMMIT_MSG: "${{ inputs.commit_message || github.event.head_commit.message }}"
+        COMMIT_MSG: "${{ inputs.commit-message || github.event.head_commit.message }}"
         STRIP_PREFIX: "chore(main): release "
       run: |
         VERSION=$(echo $COMMIT_MSG | sed -n "/^$STRIP_PREFIX/p" | sed "s/^$STRIP_PREFIX//")
