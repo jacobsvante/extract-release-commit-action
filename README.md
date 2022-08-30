@@ -10,6 +10,12 @@ Example of a [release-please](https://github.com/googleapis/release-please) rele
 
 <!-- action-docs-inputs -->
 
+## Inputs
+
+| parameter      | description                                                                                                        | required | default |
+| -------------- | ------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
+| commit_message | Used to manually provide a comnmit message, in case `github.event.head_commit.message` is not what should be read. | `false`  |         |
+
 <!-- action-docs-inputs -->
 
 <!-- action-docs-outputs -->
