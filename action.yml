@@ -29,4 +29,4 @@ runs:
         STRIP_PREFIX: "chore(main): release "
       run: |
         VERSION=$(echo $COMMIT_MSG | sed -n "/^$STRIP_PREFIX/p" | sed "s/^$STRIP_PREFIX//")
-        echo ::set-output name=version::$VERSION
+        echo "version=$VERSION" >> "$GITHUB_OUTPUT"
