@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/jacobsvante/extract-release-commit-action/compare/v1.0.0...v1.0.1) (2024-05-29)
+
+
+### Bug Fixes
+
+* Deprecation warning ([79bc992](https://github.com/jacobsvante/extract-release-commit-action/commit/79bc9922c9e9e6672f542b98e5a614ee9cbe3ab7))
+
 ## 1.0.0 (2022-08-30)
 
 
